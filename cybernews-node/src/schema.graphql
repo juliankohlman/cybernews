@@ -1,10 +1,10 @@
 # GraphQL schema def
 # exclamation mark in typedef means field can never be null
 
-const typeDefs = `
 type Query {
   info: String!
   feed: [Link!]!
+  link(id: ID!): Link
 }
 
 type Mutation {
@@ -16,4 +16,3 @@ type Link {
   description: String!
   url: String!
 }
-`

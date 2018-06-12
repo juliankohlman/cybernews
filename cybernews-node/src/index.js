@@ -6,19 +6,26 @@ let links = [{
   url: 'www.howtographql.com',
   description: 'Fullstack tutorial for GraphQL'
 }]
-
+// generate unique ids for incoming links
+let idCount = links.length
 
 // resolvers object is the actual GraphQL schema
 const resolvers = {
   Query: {
     info: () => `This is the API of a Cybernews`,
     feed: () => links,
+    link: (root, args) => links.find(l => l.id === args.id)
   },
-  Link: {
-    // these can be omitted b/c of the nested nature of the schema
-    // id: (root) => root.id,
-    // description: (root) => root.description,
-    // url: (root) => root.url,
+  Mutation: { // args carry the information needed for the operation (post needs => description & url args)
+    post: (root, args) => {
+      const link = {
+        id: `link-${idCount++}`,
+        description: args.description,
+        url: args.url
+      }
+      links.push(link)
+      return link
+    }
   }
 }
 
