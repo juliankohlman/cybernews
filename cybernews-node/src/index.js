@@ -14,7 +14,7 @@ const resolvers = {
   Query: {
     info: () => `This is the API of a Cybernews`,
     feed: () => links,
-    link: (root, args) => links.find(l => l.id === args.id)
+    link: (root, args) => links.find(link => link.id === args.id)
   },
   Mutation: { // args carry the information needed for the operation (post needs => description & url args)
     post: (root, args) => {
@@ -25,6 +25,12 @@ const resolvers = {
       }
       links.push(link)
       return link
+    },
+    deleteLink: (root, args) => { 
+     
+    },
+    updateLink: (root, args) => {
+      
     }
   }
 }
