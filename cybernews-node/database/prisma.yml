@@ -1,0 +1,15 @@
+# Main config for Prisma db service
+
+# service name
+service: cybernews-node
+
+# deployment stage
+stage: dev
+
+# data model
+datamodel: datamodel.graphql
+
+# restrict access to api to JWTs signed with this secret
+secret: mysecret123
+
+cluster: public-blueogre-607/prisma-us1
