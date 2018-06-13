@@ -7,6 +7,7 @@ const resolvers = {
     info: () => `This is the API of a Cybernews`,
     feed: (root, args, context, info) => {
       return context.db.query.links({}, info)
+    }
   },
   Mutation: { // args carry the information needed for the operation (post needs => description & url args)
     post: (root, args, context, info) => {

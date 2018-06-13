@@ -5,4 +5,13 @@ type Link {
   createdAt: DateTime!
   description: String!
   url: String!
+  postedBy: User # relation field that points to a user instance
+}
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  links: [Link!]! # one to many relationship 
 }

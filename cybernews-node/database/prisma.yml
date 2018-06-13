@@ -12,4 +12,5 @@ datamodel: datamodel.graphql
 # restrict access to api to JWTs signed with this secret
 secret: mysecret123
 
-cluster: public-blueogre-607/prisma-us1
+#cluster: public-blueogre-607/prisma-us1
+endpoint: https://us1.prisma.sh/public-blueogre-607/cybernews-node/dev
