@@ -11,7 +11,6 @@ class Link extends Component {
 		);
 	}
 
-	// ! see link on github
 	_voteForLink = async () => {
 		// Chapter 6
 	};
