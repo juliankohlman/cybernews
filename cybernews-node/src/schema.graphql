@@ -1,0 +1,22 @@
+# The Schema
+# info === a root field with a type of string than cannot be null
+# 3 special root types Query, Mutation, Subscription
+# Types => fields
+# schema-driven development: 1. extend the schema with new root filed, 2. implement the corresponding resolver func
+
+const typeDefs = `
+  type Query {
+    info: String!
+    feed: [Link!]!
+  }
+
+  type Mutation {
+    post(url: String!, description: String!): Link!
+  }
+  
+  type Link {
+    id: ID!
+    description: String!
+    url: String!
+  }
+`;
