@@ -42,6 +42,11 @@ const resolvers = {
 			// console.log(links[args.id]);
 			Object.assign(links[args.id], update);
 			return update;
+		},
+		deleteLink: (parent, args) => {
+			// links.filter(link => link.id !== `link-${args.id}`);
+			// console.log(links);
+			// return links[args.id];
 		}
 	}
 };
