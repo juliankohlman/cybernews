@@ -17,7 +17,10 @@ let idCount = links.length;
 const resolvers = {
 	Query: {
 		info: () => `This is the API for the cybernews app`,
-		feed: () => links
+		feed: () => links,
+		link: (parent, args) => {
+			return links[args.id];
+		}
 	},
 	Mutation: {
 		post: (parent, args) => {
@@ -28,11 +31,22 @@ const resolvers = {
 			};
 			links.push(link);
 			return link;
+		},
+		updateLink: (parent, args) => {
+			const update = {
+				id: `link-${args.id}`,
+				description: args.description,
+				url: args.url
+			};
+			// console.log(update);
+			// console.log(links[args.id]);
+			Object.assign(links[args.id], update);
+			return update;
 		}
 	}
 };
 
-// when type of root field is an object type (selection set includes: at least on of its fields)
+// when type of root field is an object type (selection set includes: at least one of its fields)
 
 // passing accepted operations to server, and telling the server how to 'resolve' those operations
 const server = new GraphQLServer({
