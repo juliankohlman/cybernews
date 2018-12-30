@@ -15,6 +15,7 @@ let idCount = links.length;
 // context gets passed through the resolver chain allowing every resolver to read/write from or to it.
 // the server invokes all resolver functions for the fields contained in a query
 const resolvers = {
+	// * import and use the prisma clients to access database from inside resolver functions
 	Query: {
 		info: () => `This is the API for the cybernews app`,
 		feed: () => links,
