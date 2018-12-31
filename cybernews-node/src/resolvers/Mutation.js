@@ -31,12 +31,29 @@ async function login(parent, args, context, info) {
 }
 
 function post(parent, args, context, info) {
-  const userId = getUserId(context)
-  return context.prisma.createLink({
-    url: args.url,
-    description: args.description,
-    postedBy: { connect : { id: userId }}
-  })
+	const userId = getUserId(context);
+	// if exception gets thrown by userId the function scope will
+	// exit and the response will contain the 'not authenticated' error
+	return context.prisma.createLink({
+		url: args.url,
+		description: args.description,
+		postedBy: { connect: { id: userId } }
+	});
 }
+
+// updateLink: (parent, args) => {
+// 	const update = {
+// 		id: `link-${args.id}`,
+// 		description: args.description,
+// 		url: args.url
+// 	};
+// 	Object.assign(links[args.id], update);
+// 	return update;
+// },
+// deleteLink: (parent, args) => {
+// links.filter(link => link.id !== `link-${args.id}`);
+// console.log(links);
+// return links[args.id];
+// }
 
 module.exports = { signup, login, post };
