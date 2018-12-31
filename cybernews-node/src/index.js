@@ -6,6 +6,7 @@ const Mutation = require('./resolvers/Mutation');
 const User = require('./resolvers/User');
 const Link = require('./resolvers/Link');
 const Subscription = require('./resolvers/Subscription');
+const Vote = require('./resolvers/Vote');
 // implementation of your schema (structure is identical to schema)
 // context gets passed through the resolver chain allowing every resolver to read/write from or to it.
 // the server invokes all resolver functions for the fields contained in a query
@@ -18,7 +19,8 @@ const resolvers = {
 	Mutation,
 	User,
 	Link,
-	Subscription
+	Subscription,
+	Vote
 };
 
 // when type of root field is an object type (selection set includes: at least one of its fields)
