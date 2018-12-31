@@ -1,6 +1,6 @@
 # redeploy commands (apply changes and migrate underlying db schema)
 # prisma deploy
-# primsa generate => updates prisma client with CRUD op's for newly added models
+# primsa generate => updates prisma client with CRUD op's for newly added models OR use a post-deploy hook
 type Link {
 	id: ID! @unique
 	description: String!
