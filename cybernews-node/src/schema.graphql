@@ -36,8 +36,8 @@ type Subscription {
 
 type Query {
 	info: String!
-	feed: [Link!]!
 	link(id: ID!): Link
+	feed(filter: String, skip: Int, first: Int): [Link!]!
 }
 
 type Mutation {
