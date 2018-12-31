@@ -18,7 +18,7 @@ const resolvers = {
 		}
 	},
 	Mutation: {
-		post: (root, args, content) => {
+		post: (root, args, context) => {
 			return context.prisma.createLink({
 				url: args.url,
 				description: args.description

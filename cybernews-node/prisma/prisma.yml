@@ -3,6 +3,10 @@ endpoint: https://eu1.prisma.sh/julian-jay-kohlman-185c97/prisma/dev
 
 datamodel: datamodel.prisma
 
+hooks:
+  post-deploy:
+    - prisma generate
+
 generate:
   - generator: javascript-client
     output: ../src/generated/prisma-client
