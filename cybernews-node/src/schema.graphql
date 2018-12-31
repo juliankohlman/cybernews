@@ -8,6 +8,11 @@ type AuthPayload {
 	user: User
 }
 
+type Feed {
+	links: [Link!]!
+	count: Int!
+}
+
 enum LinkOrderByInput {
 	description_ASC
 	description_DESC
@@ -46,12 +51,7 @@ type Subscription {
 type Query {
 	info: String!
 	link(id: ID!): Link
-	feed(
-		filter: String
-		skip: Int
-		first: Int
-		orderBy: LinkOrderByInput
-	): [Link!]!
+	feed(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): Feed!
 }
 
 type Mutation {
