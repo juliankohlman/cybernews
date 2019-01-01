@@ -3,6 +3,7 @@
 # 3 special root types Query, Mutation, Subscription
 # Types => fields
 # schema-driven development: 1. extend the schema with new root filed, 2. implement the corresponding resolver func
+
 type AuthPayload {
 	token: String
 	user: User

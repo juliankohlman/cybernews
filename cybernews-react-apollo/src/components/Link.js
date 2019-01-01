@@ -11,9 +11,9 @@ class Link extends Component {
 		);
 	}
 
-	_voteForLink = async () => {
-		// Chapter 6
-	};
+	// _voteForLink = async () => {
+	// 	// Chapter 6
+	// };
 }
 
 export default Link;
