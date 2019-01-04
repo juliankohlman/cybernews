@@ -17,7 +17,7 @@ const FEED_QUERY = gql`
 	}
 `;
 
-export class LinkList extends Component {
+class LinkList extends Component {
 	render() {
 		return (
 			<Query query={FEED_QUERY}>
