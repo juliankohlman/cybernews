@@ -3,7 +3,9 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { AUTH_TOKEN } from '../constants';
 
-// ! TODO replace storing of JWTs in localStorage with Auth0 Login approach
+// * TODO replace storing of JWTs in localStorage with Auth0 Login approach
+// * https://auth0.com/docs/quickstart/spa/react/01-login#configure-auth0
+
 //** signup and login mutations */
 const SIGNUP_MUTATION = gql`
 	mutation SignupMutation($email: String!, $password: String!, $name: String!) {
