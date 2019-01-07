@@ -3,6 +3,7 @@
 # 3 special root types Query, Mutation, Subscription
 # Types => fields
 # schema-driven development: 1. extend the schema with new root filed, 2. implement the corresponding resolver func
+scalar DateTime
 
 type AuthPayload {
 	token: String
@@ -32,6 +33,7 @@ type User {
 
 type Link {
 	id: ID!
+	createdAt: DateTime!
 	description: String!
 	url: String!
 	postedBy: User
