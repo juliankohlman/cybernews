@@ -10,8 +10,19 @@ const FEED_QUERY = gql`
 		feed {
 			links {
 				id
+				createdAt
 				url
 				description
+				postedBy {
+					id
+					name
+				}
+				votes {
+					id
+					user {
+						id
+					}
+				}
 			}
 		}
 	}
@@ -26,6 +37,7 @@ class LinkList extends Component {
 				{/* Always check data.loading and data.error b/f rendering */}
 				{({ loading, error, data }) => {
 					console.log(data);
+					console.log(error);
 					// (add a loading animation!)
 					// (add an error graphic)
 					if (loading) return <div>Fetching Links</div>;
@@ -35,8 +47,8 @@ class LinkList extends Component {
 
 					return (
 						<div>
-							{feedLinks.map(link => (
-								<Link key={link.id} link={link} />
+							{feedLinks.map((link, index) => (
+								<Link key={link.id} link={link} index={index} />
 							))}
 						</div>
 					);
