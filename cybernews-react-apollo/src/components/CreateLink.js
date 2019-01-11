@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import { FEED_QUERY } from './LinkList';
-import gql from 'graphql-tag';
+// import gql from 'graphql-tag';
 import { LINKS_PER_PAGE } from '../constants';
+import { POST_MUTATION } from '../queries/postMutation.gql';
 
-const POST_MUTATION = gql`
-	mutation PostMutation($description: String!, $url: String!) {
-		post(description: $description, url: $url) {
-			id
-			url
-			description
-		}
-	}
-`;
+// const POST_MUTATION = gql`
+// 	mutation PostMutation($description: String!, $url: String!) {
+// 		post(description: $description, url: $url) {
+// 			id
+// 			url
+// 			description
+// 		}
+// 	}
+// `;
 
 class CreateLink extends Component {
 	state = {
