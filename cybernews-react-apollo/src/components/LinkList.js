@@ -28,6 +28,29 @@ export const FEED_QUERY = gql`
 	}
 `;
 
+const NEW_LINKS_SUBSCRIPTION = gql`
+	subscription {
+		newLink {
+			node {
+				id
+				url
+				description
+				createdAt
+				postedBy {
+					id
+					name
+				}
+				votes {
+					id
+					user {
+						id
+					}
+				}
+			}
+		}
+	}
+`;
+
 class LinkList extends Component {
 	_updateCacheAfterVote = (store, createVote, linkId) => {
 		const data = store.readQuery({ query: FEED_QUERY });
@@ -37,19 +60,40 @@ class LinkList extends Component {
 
 		store.writeQuery({ query: FEED_QUERY, data });
 	};
+
+	_subscribeToNewLinks = subscribeToMore => {
+		subscribeToMore({
+			document: NEW_LINKS_SUBSCRIPTION,
+			updateQuery: (prev, { subscriptionData }) => {
+				if (!subscriptionData.data) return prev;
+				const newLink = subscriptionData.data.newLink.node;
+
+				return Object.assign({}, prev, {
+					feed: {
+						links: [newLink, ...prev.feed.links],
+						count: prev.feed.links.length + 1,
+						__typename: prev.feed.__typename
+					}
+				});
+			}
+		});
+	};
+
 	render() {
 		return (
 			<Query query={FEED_QUERY}>
 				{/* Render prop function */}
 				{/* Render prop function contains props or info about the 'state' of the network request */}
 				{/* Always check data.loading and data.error b/f rendering */}
-				{({ loading, error, data }) => {
+				{({ loading, error, data, subscribeToMore }) => {
 					console.log(data);
 					console.log(error);
 					// (add a loading animation!)
 					// (add an error graphic)
 					if (loading) return <div>Fetching Links</div>;
 					if (error) return <div>Error fetching links</div>;
+
+					this._subscribeToNewLinks(subscribeToMore);
 
 					const feedLinks = data.feed.links;
 
