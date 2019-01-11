@@ -31,20 +31,18 @@ export const FEED_QUERY = gql`
 const NEW_LINKS_SUBSCRIPTION = gql`
 	subscription {
 		newLink {
-			node {
+			id
+			url
+			description
+			createdAt
+			postedBy {
 				id
-				url
-				description
-				createdAt
-				postedBy {
+				name
+			}
+			votes {
+				id
+				user {
 					id
-					name
-				}
-				votes {
-					id
-					user {
-						id
-					}
 				}
 			}
 		}
@@ -66,7 +64,7 @@ class LinkList extends Component {
 			document: NEW_LINKS_SUBSCRIPTION,
 			updateQuery: (prev, { subscriptionData }) => {
 				if (!subscriptionData.data) return prev;
-				const newLink = subscriptionData.data.newLink.node;
+				const newLink = subscriptionData.data.newLink;
 
 				return Object.assign({}, prev, {
 					feed: {

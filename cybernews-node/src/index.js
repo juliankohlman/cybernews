@@ -17,9 +17,9 @@ const resolvers = {
 	// * import and use the prisma clients to access database from inside resolver functions
 	Query,
 	Mutation,
+	Subscription,
 	User,
 	Link,
-	Subscription,
 	Vote
 };
 
