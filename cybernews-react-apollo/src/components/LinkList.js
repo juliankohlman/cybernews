@@ -1,82 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
 import { LINKS_PER_PAGE } from '../constants';
-import gql from 'graphql-tag';
+import { FEED_QUERY } from '../queries/feedQuery';
+import { NEW_LINKS_SUBSCRIPTION } from '../queries/newlinksSubscription';
+import { NEW_VOTES_SUBSCRIPTION } from '../queries/newvotesSubscription';
 import Link from './Link';
-
-// query that will be sent to the API
-// using the gql parser function to parse the plain string
-export const FEED_QUERY = gql`
-	query FeedQuery($first: Int, $skip: Int, $orderBy: LinkOrderByInput) {
-		feed(first: $first, skip: $skip, orderBy: $orderBy) {
-			links {
-				id
-				createdAt
-				url
-				description
-				postedBy {
-					id
-					name
-				}
-				votes {
-					id
-					user {
-						id
-					}
-				}
-			}
-			count
-		}
-	}
-`;
-
-const NEW_LINKS_SUBSCRIPTION = gql`
-	subscription {
-		newLink {
-			id
-			url
-			description
-			createdAt
-			postedBy {
-				id
-				name
-			}
-			votes {
-				id
-				user {
-					id
-				}
-			}
-		}
-	}
-`;
-
-const NEW_VOTES_SUBSCRIPTION = gql`
-	subscription {
-		newVote {
-			id
-			link {
-				id
-				url
-				description
-				createdAt
-				postedBy {
-					id
-					name
-				}
-				votes {
-					id
-					user {
-						id
-					}
-				}
-			}
-			user {
-				id
-			}
-		}
-	}
-`;
 
 class LinkList extends Component {
 	_nextPage = data => {

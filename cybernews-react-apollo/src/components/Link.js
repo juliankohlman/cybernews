@@ -1,29 +1,10 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 import { AUTH_TOKEN } from '../constants';
 import { timeDifferenceForDate } from '../utils';
+import { VOTE_MUTATION } from '../queries/voteMutation';
 
-// * use styled-components for Link Component styling
-const VOTE_MUTATION = gql`
-	mutation VoteMutation($linkId: ID!) {
-		vote(linkId: $linkId) {
-			id
-			link {
-				votes {
-					id
-					user {
-						id
-					}
-				}
-			}
-			user {
-				id
-			}
-		}
-	}
-`;
-
+// * TODO: use styled-components for Link Component styling
 class Link extends Component {
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN);
