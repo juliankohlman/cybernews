@@ -11,9 +11,11 @@ class Header extends Component {
 				<div className="flex flex-fixed black">
 					{/* TODO add logo to header top left corner */}
 					<div className="fw7 mr1">CyberNews</div>
+					<div className="ml1">|</div>
 					<Link to="/" className="ml1 no-underline black">
 						new
 					</Link>
+					<div className="ml1">|</div>
 					<Link to="/top" className="ml1 no-underline black">
 						top
 					</Link>
