@@ -9,53 +9,60 @@ class Header extends Component {
 		const authToken = localStorage.getItem(AUTH_TOKEN);
 		return (
 			<div className="flex pa1 justify-between nowrap green">
+				{/* flex pa1 space-between wrap green */}
 				<nav class="dt w-100 border-box pa3 ph5-ns">
-					<a class="dtc v-mid mid-gray link dim w-25" href="#" title="Home">
-						<img src={logo} class="dib w4 h4 br-100" alt="Site Name" />
+					<a
+						class="dtc v-mid mid-gray link dim w-25"
+						href="#"
+						title="CyberNews Top page"
+					>
+						<img src={logo} class="dib w4 h4 br-100" alt="CyberNews" />
 					</a>
 					<div class="dtc v-mid w-75 tr">
 						<Link to="/" className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns">
-							new
+							| new |
 						</Link>
 						<Link
 							to="/top"
 							className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 						>
-							top
+							| top |
 						</Link>
 						<Link
 							to="/search"
 							className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 						>
-							search
+							| search |
 						</Link>
 						{authToken && (
-							<div className="flex">
-								<div className="ml1">|</div>
-								<Link
-									to="/create"
-									className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
-								>
-									submit
-								</Link>
-							</div>
+							// <div className="flex">
+							// <div className="ml1">|</div>
+							<Link
+								to="/create"
+								className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
+							>
+								| submit |
+							</Link>
+							// </div>
 						)}
 						{authToken ? (
-							<div
+							<Link
 								className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 								onClick={() => {
 									localStorage.removeItem(AUTH_TOKEN);
 									this.props.history.push('/');
 								}}
+								to="/"
 							>
-								logout
-							</div>
+								{' '}
+								| logout |
+							</Link>
 						) : (
 							<Link
 								to="/login"
 								className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 							>
-								login
+								| login |
 							</Link>
 						)}
 					</div>

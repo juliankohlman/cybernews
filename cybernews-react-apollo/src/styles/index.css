@@ -1,19 +1,33 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-family: Verdana, Geneva, sans-serif;
+	font-family: Consolas;
 }
 
 input {
 	max-width: 500px;
 }
 
-.gray {
-	color: #828282;
+@media screen and (min-width: 30em) {
+	.ph5-ns {
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+
+	.mr4-ns {
+		margin-right: 2rem;
+	}
+
+	.f5-ns {
+		font-size: 1rem;
+	}
 }
 
-.orange {
-	background-color: #ff6600;
+@media screen and (max-width: 65em) {
+}
+
+.gray {
+	color: #828282;
 }
 
 .green {
@@ -30,6 +44,10 @@ input {
 
 .w85 {
 	width: 85%;
+}
+
+.link {
+	color: #f9fcf9;
 }
 
 .button {
