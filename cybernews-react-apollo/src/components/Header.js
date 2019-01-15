@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { AUTH_TOKEN } from '../constants';
 import logo from '../styles/logo.png';
-
+// ! TODO adjust header links for mid-range media querie
+// ! links should slide underneath logo
 class Header extends Component {
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN);
 		return (
 			<div className="flex pa1 justify-between nowrap green">
 				{/* flex pa1 space-between wrap green */}
+
 				<nav class="dt w-100 border-box pa3 ph5-ns">
 					<a
 						class="dtc v-mid mid-gray link dim w-25"
