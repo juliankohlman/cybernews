@@ -8,6 +8,11 @@ import { VOTE_MUTATION } from '../queries/voteMutation';
 class Link extends Component {
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN);
+		const shortLink = this.props.link.url
+			.split(/\W+/)
+			.filter(i => i !== 'https' && i !== 'http' && i !== 'www')
+			.slice(0, 2)
+			.join('.');
 		return (
 			<div className="flex mt2 items-start">
 				<div className="flex items-center">
@@ -36,16 +41,14 @@ class Link extends Component {
 							target="_blank"
 						>
 							{this.props.link.description}
-						</a>
-						(
+						</a>{' '}
 						<a
 							href={this.props.link.url}
 							className="url_display underline-hover"
 							target="_blank"
 						>
-							{this.props.link.url}
+							({shortLink})
 						</a>
-						)
 					</div>
 					<div className="f6 lh-copy gray">
 						{this.props.link.votes.length} votes | by{' '}
