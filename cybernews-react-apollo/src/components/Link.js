@@ -30,9 +30,20 @@ class Link extends Component {
 				</div>
 				<div className="ml1">
 					<div>
-						{this.props.link.description} (
-						<a href={this.props.link.url} target="_blank">
-							Link
+						<a
+							href={this.props.link.url}
+							className="listed_link dim"
+							target="_blank"
+						>
+							{this.props.link.description}
+						</a>
+						(
+						<a
+							href={this.props.link.url}
+							className="url_display underline-hover"
+							target="_blank"
+						>
+							{this.props.link.url}
 						</a>
 						)
 					</div>

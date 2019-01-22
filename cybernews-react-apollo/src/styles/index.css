@@ -50,6 +50,16 @@ input {
 	color: #f9fcf9;
 }
 
+.listed_link {
+	color: black;
+	text-decoration: none;
+}
+
+.url_display {
+	color: gray;
+	text-decoration: none;
+}
+
 .button {
 	font-family: monospace;
 	font-size: 10pt;
