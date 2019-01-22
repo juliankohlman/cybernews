@@ -8,11 +8,15 @@ import { VOTE_MUTATION } from '../queries/voteMutation';
 class Link extends Component {
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN);
+		const titleCaseDesc = `${this.props.link.description[0].toUpperCase()}${this.props.link.description.slice(
+			1
+		)}`;
 		const shortLink = this.props.link.url
 			.split(/\W+/)
 			.filter(i => i !== 'https' && i !== 'http' && i !== 'www')
 			.slice(0, 2)
 			.join('.');
+
 		return (
 			<div className="flex mt2 items-start">
 				<div className="flex items-center">
@@ -40,7 +44,7 @@ class Link extends Component {
 							className="listed_link dim"
 							target="_blank"
 						>
-							{this.props.link.description}
+							{titleCaseDesc}
 						</a>{' '}
 						<a
 							href={this.props.link.url}
