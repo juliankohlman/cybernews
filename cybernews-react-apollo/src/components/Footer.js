@@ -1,5 +1,5 @@
 import React from 'react';
-
+// * Footer will list some helpful links and have a search box
 export default function Footer() {
 	return (
 		<div>
