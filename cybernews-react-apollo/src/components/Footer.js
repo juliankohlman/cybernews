@@ -4,8 +4,8 @@ export default function Footer() {
 	return (
 		// * will update to match header styling and hackernews site
 		<div className="flex pa1 justify-between nowrap orange">
-			<hr />
-			<span>
+			<span className="pa4">
+				<hr />
 				Guidelines | FAQ | Support | API | Security | Lists | Bookmarklet |
 				Legal | Apply to YC | Contact
 			</span>
