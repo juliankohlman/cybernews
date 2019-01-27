@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
 import LinkList from './LinkList';
 import CreateLink from './CreateLink';
 import Login from './Login';
@@ -21,6 +22,7 @@ class App extends Component {
 						<Route exact path="/new/:page" component={LinkList} />
 					</Switch>
 				</div>
+				<Footer />
 			</div>
 		);
 	}
