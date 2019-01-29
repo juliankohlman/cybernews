@@ -86,53 +86,58 @@ class LinkList extends Component {
 
 	render() {
 		return (
-			<Query query={FEED_QUERY} variables={this._getQueryVariables()}>
-				{/* Render prop function */}
-				{/* Render prop function contains props or info about the 'state' of the network request */}
-				{/* Always check data.loading and data.error b/f rendering */}
-				{({ loading, error, data, subscribeToMore }) => {
-					console.log(data);
-					console.log(error);
-					// (add a loading animation!)
-					if (loading) return <div>Fetching Links</div>;
-					// (add an error graphic)
-					if (error) return <div>Error fetching links</div>;
+			<div style={{ minHeight: '75vh' }}>
+				<Query query={FEED_QUERY} variables={this._getQueryVariables()}>
+					{/* Render prop function */}
+					{/* Render prop function contains props or info about the 'state' of the network request */}
+					{/* Always check data.loading and data.error b/f rendering */}
+					{({ loading, error, data, subscribeToMore }) => {
+						console.log(data);
+						console.log(error);
+						// (add a loading animation!)
+						if (loading) return <div>Fetching Links</div>;
+						// (add an error graphic)
+						if (error) return <div>Error fetching links</div>;
 
-					this._subscribeToNewLinks(subscribeToMore);
-					this._subscribeToNewVotes(subscribeToMore);
+						this._subscribeToNewLinks(subscribeToMore);
+						this._subscribeToNewVotes(subscribeToMore);
 
-					const linksToRender = this._getLinksToRender(data);
-					const isNewPage = this.props.location.pathname.includes('new');
-					const pageIndex = this.props.match.params.page
-						? (this.props.match.params.page - 1) * LINKS_PER_PAGE
-						: 0;
+						const linksToRender = this._getLinksToRender(data);
+						const isNewPage = this.props.location.pathname.includes('new');
+						const pageIndex = this.props.match.params.page
+							? (this.props.match.params.page - 1) * LINKS_PER_PAGE
+							: 0;
 
-					// const feedLinks = data.feed.links;
+						// const feedLinks = data.feed.links;
 
-					return (
-						<Fragment>
-							{linksToRender.map((link, index) => (
-								<Link
-									key={link.id}
-									link={link}
-									index={index + pageIndex}
-									updateStoreAfterVote={this._updateCacheAfterVote}
-								/>
-							))}
-							{isNewPage && (
-								<div className="flex ml4 mv3 gray">
-									<div className="pointer mr2" onClick={this._previousPage}>
-										Previous
+						return (
+							<Fragment>
+								{linksToRender.map((link, index) => (
+									<Link
+										key={link.id}
+										link={link}
+										index={index + pageIndex}
+										updateStoreAfterVote={this._updateCacheAfterVote}
+									/>
+								))}
+								{isNewPage && (
+									<div className="flex ml4 mv3 gray">
+										<div className="pointer mr2" onClick={this._previousPage}>
+											Previous
+										</div>
+										<div
+											className="pointer"
+											onClick={() => this._nextPage(data)}
+										>
+											Next
+										</div>
 									</div>
-									<div className="pointer" onClick={() => this._nextPage(data)}>
-										Next
-									</div>
-								</div>
-							)}
-						</Fragment>
-					);
-				}}
-			</Query>
+								)}
+							</Fragment>
+						);
+					}}
+				</Query>
+			</div>
 		);
 	}
 }
