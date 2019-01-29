@@ -12,15 +12,15 @@ class Header extends Component {
 			<div className="flex pa1 justify-between nowrap green">
 				{/* flex pa1 space-between wrap green */}
 
-				<nav class="dt w-100 border-box pa3 ph5-ns">
+				<nav className="dt w-100 border-box pa3 ph5-ns">
 					<a
-						class="dtc v-mid mid-gray link dim w-25"
-						href="#"
+						className="dtc v-mid mid-gray link dim w-25"
+						href="/top"
 						title="CyberNews Top page"
 					>
-						<img src={logo} class="dib w4 h4 br-100" alt="CyberNews" />
+						<img src={logo} className="dib w4 h4 br-100" alt="CyberNews" />
 					</a>
-					<div class="dtc v-mid w-75 tr">
+					<div className="dtc v-mid w-75 tr">
 						<Link to="/" className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns">
 							| new |
 						</Link>
