@@ -21,13 +21,15 @@ class Search extends Component {
 
 	render() {
 		return (
-			<div>
-				<div>
-					<input
-						type="text"
-						onChange={e => this.setState({ filter: e.target.value })}
-					/>
-					<button onClick={() => this._executeSearch()}>search</button>
+			<div style={{ minHeight: '75vh' }}>
+				<div className="flex justify-center">
+					<div className="pa4">
+						<input
+							type="text"
+							onChange={e => this.setState({ filter: e.target.value })}
+						/>
+						<button onClick={() => this._executeSearch()}>search</button>
+					</div>
 				</div>
 				{this.state.links.map((link, index) => (
 					<Link key={link.id} link={link} index={index} />

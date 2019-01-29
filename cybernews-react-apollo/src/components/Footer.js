@@ -1,17 +1,20 @@
 import React from 'react';
-// * Footer will list some helpful links and have a search box
-import Search from './Search';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-export default function Footer() {
+function Footer() {
+	// ! ADD HELPFUL LINKS RELEVANT TO TECH AND LEARNING AND KEEP SEARCH IN HEADER
 	return (
-		<div className="flex pa1 justify-between nowrap green">
+		<div className="flex pa4 justify-center nowrap green">
+			{/* <div className="items-center mt3 fl">
+				<Link to="/search">search </Link>
+			</div> */}
 			<span className="pa4 white-90">
 				Guidelines | FAQ | Support | API | Security | Lists | Bookmarklet |
 				Legal | Apply to YC | Contact
-				<div className="items-center mt3 fl">
-					<Search />
-				</div>
 			</span>
 		</div>
 	);
 }
+
+export default withRouter(Footer);

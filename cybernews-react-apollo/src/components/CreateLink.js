@@ -13,8 +13,8 @@ class CreateLink extends Component {
 	render() {
 		const { description, url } = this.state;
 		return (
-			<div>
-				<div>
+			<div style={{ minHeight: '75vh' }}>
+				<div className="flex justify-center pa4">
 					<input
 						className="mb2"
 						value={description}
@@ -25,33 +25,38 @@ class CreateLink extends Component {
 					<input
 						className="mb2"
 						value={url}
-						onChange={e => this.setState({ url: e.target.value })}
+						onChange={e =>
+							this.setState({
+								url: e.target.value
+							})
+						}
 						type="text"
 						placeholder="A URL for the link"
 					/>
+
+					<Mutation
+						mutation={POST_MUTATION}
+						variables={{ description, url }}
+						onCompleted={() => this.props.history.push('/new/1')}
+						update={(store, { data: { post } }) => {
+							const first = LINKS_PER_PAGE;
+							const skip = 0;
+							const orderBy = 'createdAt_DESC';
+							const data = store.readQuery({
+								query: FEED_QUERY,
+								variables: { first, skip, orderBy }
+							});
+							data.feed.links.unshift(post);
+							store.writeQuery({
+								query: FEED_QUERY,
+								data,
+								variables: { first, skip, orderBy }
+							});
+						}}
+					>
+						{postMutation => <button onClick={postMutation}>Submit</button>}
+					</Mutation>
 				</div>
-				<Mutation
-					mutation={POST_MUTATION}
-					variables={{ description, url }}
-					onCompleted={() => this.props.history.push('/new/1')}
-					update={(store, { data: { post } }) => {
-						const first = LINKS_PER_PAGE;
-						const skip = 0;
-						const orderBy = 'createdAt_DESC';
-						const data = store.readQuery({
-							query: FEED_QUERY,
-							variables: { first, skip, orderBy }
-						});
-						data.feed.links.unshift(post);
-						store.writeQuery({
-							query: FEED_QUERY,
-							data,
-							variables: { first, skip, orderBy }
-						});
-					}}
-				>
-					{postMutation => <button onClick={postMutation}>Submit</button>}
-				</Mutation>
 			</div>
 		);
 	}

@@ -50,6 +50,10 @@ input {
 	color: #f9fcf9;
 }
 
+.link:active {
+	transition: color 0.15s ease-in;
+}
+
 .listed_link {
 	color: black;
 	text-decoration: none;

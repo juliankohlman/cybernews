@@ -11,7 +11,6 @@ class Header extends Component {
 		return (
 			<div className="flex pa1 justify-between nowrap green">
 				{/* flex pa1 space-between wrap green */}
-
 				<nav className="dt w-100 border-box pa3 ph5-ns">
 					<a
 						className="dtc v-mid mid-gray link dim w-25"
@@ -37,15 +36,12 @@ class Header extends Component {
 							| search |
 						</Link>
 						{authToken && (
-							// <div className="flex">
-							// <div className="ml1">|</div>
 							<Link
 								to="/create"
 								className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 							>
 								| submit |
 							</Link>
-							// </div>
 						)}
 						{authToken ? (
 							<Link
@@ -69,51 +65,6 @@ class Header extends Component {
 						)}
 					</div>
 				</nav>
-				{/*<div className="flex flex-fixed black">
-					 TODO add logo to header top left corner 
-					<div className="fw7 mr1">CyberNews</div>
-					<img src={logo} className="w5 h5" alt="logo" />
-					<div className="ml1">|</div>
-					<Link to="/" className="ml1 no-underline black">
-						new
-					</Link>
-					<div className="ml1">|</div>
-					<Link to="/top" className="ml1 no-underline black">
-						top
-					</Link>
-					<div className="ml1">|</div>
-					<Link to="/search" className="ml1 no-underline black">
-						search
-					</Link>
-					{authToken && (
-						<div className="flex">
-							<div className="ml1">|</div>
-							<Link to="/create" className="ml1 no-underline black">
-								submit
-							</Link>
-						</div>
-					)}
-				</div>*/}
-				{/* <div className="flex flex-fixed">
-					{authToken ? (
-						<div
-							className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
-							onClick={() => {
-								localStorage.removeItem(AUTH_TOKEN);
-								this.props.history.push('/');
-							}}
-						>
-							logout
-						</div>
-					) : (
-						<Link
-							to="/login"
-							className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
-						>
-							login
-						</Link>
-					)}
-          </div> */}
 			</div>
 		);
 	}
