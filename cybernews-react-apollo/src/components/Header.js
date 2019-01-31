@@ -9,11 +9,11 @@ class Header extends Component {
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN);
 		return (
-			<div className="flex pa1 justify-between nowrap green">
+			<div className="flex pa1 justify-between wrap green">
 				{/* flex pa1 space-between wrap green */}
 				<nav className="dt w-100 border-box pa3 ph5-ns">
 					<a
-						className="dtc v-mid mid-gray link dim w-25"
+						// className="dtc v-mid mid-gray link dim w-25"
 						href="/top"
 						title="CyberNews Top page"
 					>
