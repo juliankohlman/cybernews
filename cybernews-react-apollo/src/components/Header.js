@@ -12,7 +12,7 @@ class Header extends Component {
 			<div className="tc pv3 pv4-ns green">
 				<img
 					src={logo}
-					className="br-100 pa1 ba b--black-10 h4 w4 shadow-4"
+					className="br-100 pa1 ba b--black-10 h3 w3 shadow-4"
 					alt="CyberNews"
 				/>
 				<nav className="dt w-100 border-box pa3 ph5-ns">
