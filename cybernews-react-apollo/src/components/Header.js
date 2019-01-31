@@ -12,7 +12,7 @@ class Header extends Component {
 			<div className="tc pv3 pv4-ns green">
 				<img
 					src={logo}
-					className="br-100 pa1 ba b--black-10 h5 w5"
+					className="br-100 pa1 ba b--black-10 h4 w4 shadow-4"
 					alt="CyberNews"
 				/>
 				<nav className="dt w-100 border-box pa3 ph5-ns">
@@ -22,7 +22,7 @@ class Header extends Component {
 					>
 						<img src={logo} className="dib w4 h4 br-100" alt="CyberNews" />
 					</a> */}
-					<div className="">
+					<div className="flex justify-center space-evenly">
 						<Link to="/" className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns">
 							| new |
 						</Link>
