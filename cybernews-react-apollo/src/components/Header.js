@@ -17,32 +17,32 @@ class Header extends Component {
 				/>
 				<nav className="dt w-100 border-box pa3 ph5-ns">
 					<div className="flex justify-center space-evenly">
-						<Link to="/" className="link dim dark-gray f6 f4-ns dib mr3 mr4-ns">
+						<Link to="/" className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns">
 							new
 						</Link>
 						<Link
 							to="/top"
-							className="link dim dark-gray f6 f4-ns dib mr3 mr4-ns"
+							className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 						>
 							top
 						</Link>
 						<Link
 							to="/search"
-							className="link dim dark-gray f6 f4-ns dib mr3 mr4-ns"
+							className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 						>
 							search
 						</Link>
 						{authToken && (
 							<Link
 								to="/create"
-								className="link dim dark-gray f6 f4-ns dib mr3 mr4-ns"
+								className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 							>
 								submit
 							</Link>
 						)}
 						{authToken ? (
 							<Link
-								className="link dim dark-gray f6 f4-ns dib mr3 mr4-ns"
+								className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 								onClick={() => {
 									localStorage.removeItem(AUTH_TOKEN);
 									this.props.history.push('/');
@@ -55,7 +55,7 @@ class Header extends Component {
 						) : (
 							<Link
 								to="/login"
-								className="link dim dark-gray f6 f4-ns dib mr3 mr4-ns"
+								className="link dim dark-gray f6 f5-ns dib mr3 mr4-ns"
 							>
 								login
 							</Link>

@@ -7,6 +7,7 @@ const User = require('./resolvers/User');
 const Link = require('./resolvers/Link');
 const Subscription = require('./resolvers/Subscription');
 const Vote = require('./resolvers/Vote');
+const path = require('path');
 // implementation of your schema (structure is identical to schema)
 // context gets passed through the resolver chain allowing every resolver to read/write from or to it.
 // the server invokes all resolver functions for the fields contained in a query
@@ -38,8 +39,7 @@ const server = new GraphQLServer({
 
 const options = {
 	port: 4000,
-	endpoint: '/graphql',
-	subscriptions: '/subscriptions'
+	endpoint: '/graphql'
 };
 
 server.start(options, ({ port }) =>
