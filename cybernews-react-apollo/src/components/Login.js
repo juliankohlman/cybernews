@@ -29,7 +29,7 @@ class Login extends Component {
 		const { login, email, password, name } = this.state;
 
 		return (
-			<div>
+			<div style={{ minHeight: '75vh' }}>
 				{' '}
 				<h4 className="mv3">{login ? 'Login' : 'Sign Up'}</h4>
 				<div className="flex flex-column">
