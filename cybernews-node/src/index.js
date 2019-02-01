@@ -8,7 +8,7 @@ const User = require('./resolvers/User');
 const Link = require('./resolvers/Link');
 const Subscription = require('./resolvers/Subscription');
 const Vote = require('./resolvers/Vote');
-const path = require('path');
+
 // implementation of your schema (structure is identical to schema)
 // context gets passed through the resolver chain allowing every resolver to read/write from or to it.
 // the server invokes all resolver functions for the fields contained in a query
@@ -42,8 +42,7 @@ server.use(cors());
 
 const options = {
 	port: 4000,
-	endpoint: 'https://heroku-demo-e0460895fb.herokuapp.com/links/dev'
-	// endpoint: '/graphql'
+	endpoint: '/graphql'
 };
 
 server.start(options, ({ port }) =>
