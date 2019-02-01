@@ -6,6 +6,7 @@
 		"apollo-client-preset": "^1.0.8",
 		"apollo-link-context": "^1.0.12",
 		"apollo-link-ws": "^1.0.12",
+		"cors": "^2.8.5",
 		"graphql": "^0.13.2",
 		"graphql-tag": "^2.9.2",
 		"moment": "^2.23.0",
