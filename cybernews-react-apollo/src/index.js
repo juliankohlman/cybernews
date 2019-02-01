@@ -14,7 +14,9 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { AUTH_TOKEN } from './constants';
 
-const httpLink = createHttpLink({ uri: '/graphql' });
+const httpLink = createHttpLink({
+	uri: 'https://eu1.prisma.sh/julian-jay-kohlman-185c97/prisma/dev'
+});
 
 const authLink = setContext((_, { headers }) => {
 	const token = localStorage.getItem(AUTH_TOKEN);
@@ -27,7 +29,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const wsLink = new WebSocketLink({
-	uri: `ws://graphql`,
+	uri: `wss://eu1.prisma.sh/julian-jay-kohlman-185c97/prisma/dev`,
 	options: {
 		reconnect: true,
 		connectionParams: {
