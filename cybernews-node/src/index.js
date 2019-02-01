@@ -42,7 +42,8 @@ server.use(cors());
 
 const options = {
 	port: 4000,
-	endpoint: '/graphql'
+	endpoint: 'https://heroku-demo-e0460895fb.herokuapp.com/links/dev'
+	// endpoint: '/graphql'
 };
 
 server.start(options, ({ port }) =>
