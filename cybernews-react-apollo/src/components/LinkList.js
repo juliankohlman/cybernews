@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from 'react';
+import Link from './Link';
 import { Query } from 'react-apollo';
+
 import { LINKS_PER_PAGE } from '../constants';
 import { FEED_QUERY } from '../queries/feedQuery';
 import { NEW_LINKS_SUBSCRIPTION } from '../queries/newlinksSubscription';
 import { NEW_VOTES_SUBSCRIPTION } from '../queries/newvotesSubscription';
-import Link from './Link';
 
 class LinkList extends Component {
 	_nextPage = data => {
 		const page = parseInt(this.props.match.params.page, 10);
-		if (page <= data.count / LINKS_PER_PAGE) {
+		if (page <= data.feed.count / LINKS_PER_PAGE) {
 			const nextPage = page + 1;
 			this.props.history.push(`/new/${nextPage}`);
 		}
@@ -25,9 +26,9 @@ class LinkList extends Component {
 
 	_getLinksToRender = data => {
 		const isNewPage = this.props.location.pathname.includes('new');
-		if (isNewPage) return data.links;
+		if (isNewPage) return data.feed.links;
 
-		const rankedLinks = data.links.slice();
+		const rankedLinks = data.feed.links.slice();
 		rankedLinks.sort((l1, l2) => l2.votes.length - l1.votes.length);
 		return rankedLinks;
 	};
@@ -60,7 +61,7 @@ class LinkList extends Component {
 			variables: { first, skip, orderBy }
 		});
 
-		const votedLink = data.links.find(link => link.id === linkId);
+		const votedLink = data.feed.links.find(link => link.id === linkId);
 		votedLink.votes = createVote.link.votes;
 
 		store.writeQuery({ query: FEED_QUERY, data });
@@ -92,7 +93,7 @@ class LinkList extends Component {
 					{/* Render prop function contains props or info about the 'state' of the network request */}
 					{/* Always check data.loading and data.error b/f rendering */}
 					{({ loading, error, data, subscribeToMore }) => {
-						console.log(error);
+						// console.log(error);
 
 						// (add a loading animation!)
 						if (loading) return <div>Fetching Links</div>;

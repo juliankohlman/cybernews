@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './components/App';
-
+import registerServiceWorker from './registerServiceWorker';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client-preset';
 import { createHttpLink } from 'apollo-link-http';
@@ -16,7 +16,8 @@ import { getMainDefinition } from 'apollo-utilities';
 import { endpoint, ws } from './config';
 
 const httpLink = createHttpLink({
-	uri: endpoint
+	// uri: endpoint
+	uri: '/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -30,7 +31,8 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const wsLink = new WebSocketLink({
-	uri: ws,
+	// uri: ws,
+	uri: 'ws://localhost:3000/graphql',
 	options: {
 		reconnect: true,
 		connectionParams: {
@@ -61,3 +63,5 @@ ReactDOM.render(
 	</BrowserRouter>,
 	document.getElementById('root')
 );
+
+registerServiceWorker();
