@@ -4,18 +4,19 @@ import './styles/index.css';
 import App from './components/App';
 
 import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from 'apollo-client';
-import { BrowserRouter } from 'react-router-dom';
+import { ApolloClient } from 'apollo-client-preset';
 import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { BrowserRouter } from 'react-router-dom';
+import { AUTH_TOKEN } from './constants';
+import { setContext } from 'apollo-link-context';
 import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
-import { setContext } from 'apollo-link-context';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { AUTH_TOKEN } from './constants';
+import { endpoint, ws } from './config';
 
 const httpLink = createHttpLink({
-	uri: '/graphql'
+	uri: endpoint
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -29,7 +30,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const wsLink = new WebSocketLink({
-	uri: `ws://localhost:4000/graphql`,
+	uri: ws,
 	options: {
 		reconnect: true,
 		connectionParams: {

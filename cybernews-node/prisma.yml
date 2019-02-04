@@ -1,6 +1,0 @@
-endpoint: https://heroku-demo-e0460895fb.herokuapp.com/links/dev
-datamodel: datamodel.prisma
-
-generate:
-  - generator: javascript-client
-    output: ./generated/prisma-client/

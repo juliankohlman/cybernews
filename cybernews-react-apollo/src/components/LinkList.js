@@ -9,7 +9,7 @@ import Link from './Link';
 class LinkList extends Component {
 	_nextPage = data => {
 		const page = parseInt(this.props.match.params.page, 10);
-		if (page <= data.feed.count / LINKS_PER_PAGE) {
+		if (page <= data.count / LINKS_PER_PAGE) {
 			const nextPage = page + 1;
 			this.props.history.push(`/new/${nextPage}`);
 		}
@@ -25,9 +25,9 @@ class LinkList extends Component {
 
 	_getLinksToRender = data => {
 		const isNewPage = this.props.location.pathname.includes('new');
-		if (isNewPage) return data.feed.links;
+		if (isNewPage) return data.links;
 
-		const rankedLinks = data.feed.links.slice();
+		const rankedLinks = data.links.slice();
 		rankedLinks.sort((l1, l2) => l2.votes.length - l1.votes.length);
 		return rankedLinks;
 	};
@@ -60,7 +60,7 @@ class LinkList extends Component {
 			variables: { first, skip, orderBy }
 		});
 
-		const votedLink = data.feed.links.find(link => link.id === linkId);
+		const votedLink = data.links.find(link => link.id === linkId);
 		votedLink.votes = createVote.link.votes;
 
 		store.writeQuery({ query: FEED_QUERY, data });
@@ -92,8 +92,8 @@ class LinkList extends Component {
 					{/* Render prop function contains props or info about the 'state' of the network request */}
 					{/* Always check data.loading and data.error b/f rendering */}
 					{({ loading, error, data, subscribeToMore }) => {
-						console.log(data);
 						console.log(error);
+
 						// (add a loading animation!)
 						if (loading) return <div>Fetching Links</div>;
 						// (add an error graphic)
@@ -108,7 +108,7 @@ class LinkList extends Component {
 							? (this.props.match.params.page - 1) * LINKS_PER_PAGE
 							: 0;
 
-						// const feedLinks = data.feed.links;
+						// const feedLinks = data.links;
 
 						return (
 							<Fragment>

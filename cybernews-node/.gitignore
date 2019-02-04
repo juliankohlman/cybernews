@@ -8,6 +8,8 @@
 
 # production
 /build
+/config
+/prod
 
 # misc
 .DS_Store
@@ -15,8 +17,11 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.vscode
 utils.js
 notes_adv.md
+
+
 
 npm-debug.log*
 yarn-debug.log*
