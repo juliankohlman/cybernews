@@ -13,7 +13,8 @@ import { setContext } from 'apollo-link-context';
 import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
-import { endpoint, ws } from './config';
+//todo debug production endpoint connection issue
+// import { endpoint, ws } from './config';
 
 const httpLink = createHttpLink({
 	// uri: endpoint
