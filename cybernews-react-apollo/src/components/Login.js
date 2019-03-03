@@ -7,6 +7,9 @@ import { AUTH_TOKEN } from '../constants';
 //TODO replace storing of JWTs in localStorage with Auth0 Login approach
 // * https://auth0.com/docs/quickstart/spa/react/01-login#configure-auth0
 //Todo incorporate jsdocs into project for thorough documentation
+/**
+ * Login
+ */
 class Login extends Component {
 	state = {
 		login: true,
