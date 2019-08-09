@@ -33,7 +33,8 @@ const authLink = setContext((_, { headers }) => {
 
 const wsLink = new WebSocketLink({
 	// uri: ws,
-	uri: 'ws://localhost:3000/graphql',
+	uri: 'https://kybernews.herokuapp.com/',
+	// uri: 'ws://localhost:3000/graphql',
 	options: {
 		reconnect: true,
 		connectionParams: {
